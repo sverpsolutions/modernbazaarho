@@ -101,7 +101,26 @@ const CompanySettingsPage = () => {
                 className="w-full px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-transparent focus:ring-2 focus:ring-primary/20 outline-none transition-all"
                 placeholder="/logo.jpg"
               />
-              <p className="text-[10px] text-slate-400 italic">Default: /logo.jpg (stored in public folder)</p>
+            </div>
+            <div className="space-y-2">
+              <label className="text-sm font-semibold">Primary Theme Color</label>
+              <div className="flex gap-3">
+                <input
+                  type="color"
+                  name="primary_color"
+                  value={settings.primary_color || '#2563EB'}
+                  onChange={handleChange}
+                  className="h-10 w-20 rounded border border-slate-200 bg-transparent p-1"
+                />
+                <input
+                  type="text"
+                  name="primary_color"
+                  value={settings.primary_color || '#2563EB'}
+                  onChange={handleChange}
+                  className="flex-1 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-transparent uppercase font-mono"
+                  placeholder="#2563EB"
+                />
+              </div>
             </div>
           </div>
         </div>

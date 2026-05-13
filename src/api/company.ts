@@ -24,6 +24,8 @@ export interface CompanySettings {
     low_stock_threshold: number;
     show_product_img: boolean;
     hsn_code_length: number;
+    strict_hsn_validation: boolean;
+    primary_color: string;
 }
 
 export const getCompanySettings = async () => {

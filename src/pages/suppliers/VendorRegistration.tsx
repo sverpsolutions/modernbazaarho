@@ -105,7 +105,7 @@ const AddRowButton = ({ label, onClick }: { label: string; onClick: () => void }
 // ── Initial blank form state ──────────────────────────────────────────────────
 const BLANK_FORM = {
   name: '', phone: '', email: '', supplier_type: 'Manufacturer', company_type: 'Proprietorship',
-  category: 'FMCG', contact_name: '', website: '',
+  category: 'FMCG', contact_name: '', website: '', supplier_code: '',
   // Address
   address: '', city: '', state: 'Delhi', state_code: '', pincode: '', district: '', country: 'India',
   // Legal

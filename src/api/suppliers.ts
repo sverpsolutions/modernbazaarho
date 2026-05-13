@@ -103,6 +103,22 @@ export interface supplier_note {
   created_at: string;
 }
 
+export interface supplier_terms {
+  id: number;
+  terms_text: string;
+  is_active: boolean;
+  created_at: string;
+}
+
+export interface ledger_row {
+  date: string;
+  ref_no: string;
+  description: string;
+  debit: number | string;
+  credit: number | string;
+  balance: number | string;
+}
+
 export interface approval_log {
   id: number;
   action: string;
@@ -123,6 +139,8 @@ export interface supplier_list_item {
   supplier_type: string;
   status: boolean;
   registration_status: string;
+  opening_balance: number | string;
+  credit_limit_days: number;
 }
 
 export interface supplier_detail extends supplier_list_item {
@@ -141,6 +159,8 @@ export interface supplier_detail extends supplier_list_item {
   website?: string | null;
   notes: string | null;
   registration_status: string;
+  opening_balance: number | string;
+  credit_limit_days: number;
   onboarding_token?: string | null;
   created_at: string;
   // Approval tracking
@@ -207,4 +227,10 @@ export const suppliers_api = {
   upload_file: (formData: FormData) => api.post('/upload/supplier-doc', formData, {
     headers: { 'Content-Type': 'multipart/form-data' }
   }),
+  
+  // Ledger & Terms
+  ledger: (id: number) => api.get<any>(`/suppliers/${id}/ledger`),
+  get_terms: (id: number) => api.get<any>(`/suppliers/${id}/terms`),
+  add_terms: (id: number, terms_text: string) => api.post(`/suppliers/${id}/terms`, { terms_text }),
+  delete_terms: (id: number, term_id: number) => api.delete(`/suppliers/${id}/terms/${term_id}`),
 }

@@ -42,7 +42,7 @@ export default function supplier_detail_page() {
 
   return (
     <div>
-      <page_header
+      <PageHeader
         title={supplier.name}
         subtitle={`${supplier.phone}${supplier.gst_number ? ' • GST: ' + supplier.gst_number : ''}`}
         action={<Link to={`/suppliers/${id}/edit`} className="border px-4 py-2 rounded-lg text-sm text-gray-600 hover:bg-gray-50">Edit</Link>}
