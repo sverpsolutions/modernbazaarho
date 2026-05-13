@@ -6,7 +6,7 @@ interface modal_props {
   width?: string
 }
 
-export default function modal({ title, open, onClose, children, width = 'max-w-md' }: modal_props) {
+export default function Modal({ title, open, onClose, children, width = 'max-w-md' }: modal_props) {
   if (!open) return null
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">

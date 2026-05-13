@@ -139,6 +139,7 @@ export interface supplier_list_item {
   supplier_type: string;
   status: boolean;
   registration_status: string;
+  supplier_name?: string;
   opening_balance: number | string;
   credit_limit_days: number;
 }

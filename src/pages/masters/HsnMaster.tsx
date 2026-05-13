@@ -70,6 +70,7 @@ export default function HsnMaster({ searchQuery = '', onCountUpdate }: { searchQ
       await masters_api.create_hsn({
         hsn_code: code,
         code_type: form.code_type,
+        category_type: form.code_type,
         description: form.description,
         gst_percent: Number(form.gst_percent),
         cgst_pct: Number(form.cgst_pct),

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { billing_api, type invoice_out } from '../../api/billing'
-import modal from '../../components/ui/Modal'
+import Modal from '../../components/ui/Modal'
 
 export default function invoice_view_page() {
   const { id } = useParams<{ id: string }>()
@@ -191,7 +191,7 @@ export default function invoice_view_page() {
       )}
 
       {/* Add Payment Modal */}
-      <modal title="Record Payment" open={pay_modal} onClose={() => set_pay_modal(false)}>
+      <Modal title="Record Payment" open={pay_modal} onClose={() => set_pay_modal(false)}>
         <div className="space-y-4">
           <div className="grid grid-cols-2 gap-3">
             <div>
@@ -230,10 +230,10 @@ export default function invoice_view_page() {
             </button>
           </div>
         </div>
-      </modal>
+      </Modal>
 
       {/* Cancel Modal */}
-      <modal title="Cancel Invoice" open={cancel_modal} onClose={() => set_cancel_modal(false)}>
+      <Modal title="Cancel Invoice" open={cancel_modal} onClose={() => set_cancel_modal(false)}>
         <div className="space-y-4">
           <p className="text-sm text-gray-600">This will restore stock and mark the invoice as cancelled. This action cannot be undone.</p>
           <div>
@@ -250,7 +250,7 @@ export default function invoice_view_page() {
             </button>
           </div>
         </div>
-      </modal>
+      </Modal>
     </div>
   )
 }

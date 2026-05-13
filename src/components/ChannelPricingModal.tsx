@@ -21,7 +21,7 @@ const ChannelPricingModal = ({ product_id, product_name, base_cost, onClose }: P
     setLoading(true);
     try {
       const res = await channels_api.get_product_prices(product_id);
-      setPrices(res.data);
+      setPrices(res.data.prices);
     } catch (err) {
       console.error("Failed to fetch channel prices", err);
     } finally {
@@ -101,10 +101,10 @@ const ChannelPricingModal = ({ product_id, product_name, base_cost, onClose }: P
                       />
                     </td>
                     <td className="px-4 py-4 text-right font-mono font-bold text-slate-600">
-                      ₹{parseFloat(p.final_settlement_rate).toFixed(2)}
+                      ₹{parseFloat(String(p.final_settlement_rate || 0)).toFixed(2)}
                     </td>
-                    <td className={`px-4 py-4 text-right font-mono font-bold ${parseFloat(p.minimum_profit) < 0 ? 'text-red-600' : 'text-emerald-600'}`}>
-                      ₹{parseFloat(p.minimum_profit).toFixed(2)}
+                    <td className={`px-4 py-4 text-right font-mono font-bold ${parseFloat(String(p.minimum_profit || 0)) < 0 ? 'text-red-600' : 'text-emerald-600'}`}>
+                      ₹{parseFloat(String(p.minimum_profit || 0)).toFixed(2)}
                     </td>
                     <td className="px-4 py-4 text-center">
                       <input 

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams, useNavigate } from 'react-router-dom';
 import { products_api, product_list_item } from '../../api/products';
-import { masters_api, item_group_type, item_subgroup_type, item_subcategory_type, category_type, brand_type, sub_category_brand_type, manufacturer_type, sub_manufacturer_type, variant_type, flavour_type, product_classification_type, country_type, unit_type } from '../../api/masters';
+import { masters_api, item_group_type, item_subgroup_type, item_subcategory_type, item_category_type, hsn_type, category_type, brand_type, sub_category_brand_type, manufacturer_type, sub_manufacturer_type, variant_type, flavour_type, product_classification_type, country_type, unit_type } from '../../api/masters';
 import { suppliers_api, supplier_list_item } from '../../api/suppliers';
 import { packaging_api, packaging_config, PackagingType, calcTotalUnits, calcVolumeCBM, storage_type_type, temperature_category_type } from '../../api/packaging';
 import { getCompanySettings, CompanySettings } from '../../api/company';
@@ -111,13 +111,15 @@ const ActivityCharts = ({ data }: { data: any[] }) => {
     },
     scales: {
       x: { 
+        type: 'category' as const,
         grid: { display: false },
-        ticks: { font: { size: 9, weight: '600' as const }, color: '#94a3b8' }
+        ticks: { font: { size: 9, weight: 600 }, color: '#94a3b8' }
       },
       y: {
+        type: 'linear' as const,
         border: { display: false },
         grid: { color: 'rgba(148, 163, 184, 0.08)' },
-        ticks: { font: { size: 9, weight: '600' as const }, color: '#94a3b8' }
+        ticks: { font: { size: 9, weight: 600 }, color: '#94a3b8' }
       }
     }
   };
@@ -1570,7 +1572,7 @@ const ProductAdd = () => {
                           watchStatus === 'ACTIVE' ? 'bg-green-500' :
                           watchStatus === 'TEMP_INACTIVE' ? 'bg-amber-500' :
                           'bg-rose-500'
-                        } shadow-lg shadow-current/50`}></div>
+                        } shadow-lg shadow-current/50`} style={{ fontWeight: 600 }}></div>
                       </div>
                       
                       <div className="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200 dark:border-slate-700">

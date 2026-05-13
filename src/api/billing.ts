@@ -149,6 +149,7 @@ export interface estimate_list_out {
   valid_until?: string
   total_amount: number
   status: string
+  converted_to?: string | number
   created_at: string
 }
 
@@ -163,7 +164,7 @@ export interface estimate_create {
 }
 
 export interface paginated<T> {
-  items: T[]
+  data: T[]
   total: number
   page: number
   per_page: number

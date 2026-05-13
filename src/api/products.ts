@@ -12,6 +12,7 @@ export interface product_list_item {
   gst_percent: string
   stock_qty: string
   barcode: string | null
+  thumbnail_img: string | null
   is_active: boolean
   status: boolean
   inner_pack_qty?: number
@@ -21,6 +22,11 @@ export interface product_list_item {
 
 export interface product_detail extends product_list_item {
   print_name: string | null
+  bill_print_name?: string | null
+  img_front?: string | null
+  img_back?: string | null
+  img_top?: string | null
+  img_side?: string | null
   category_id: number | null
   subcategory: string | null
   subcategory_id: number | null

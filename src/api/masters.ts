@@ -9,7 +9,7 @@ export interface manufacturer_type { id: number; name: string; code: string | nu
 export interface item_group_type { id: number; name: string; code: string | null; short_name?: string; is_active: boolean; created_by_name?: string }
 export interface item_subgroup_type { id: number; group_id: number; group_name?: string; name: string; code: string | null; short_name?: string; is_active: boolean; created_by_name?: string }
 export interface item_subcategory_type { id: number; category_id: number; category_name?: string; name: string; code: string | null; short_name?: string; default_hsn_id?: number; is_active: boolean; created_by_name?: string }
-export interface sub_category_brand_type { id: number; name: string; brand_id: number; brand_name?: string; subcategory_id: number; short_name?: string; is_active: boolean; created_by_name?: string }
+export interface sub_category_brand_type { id: number; name: string; brand_id: number; brand_name?: string; subcategory_id: number; code?: string; short_name?: string; is_active: boolean; created_by_name?: string }
 export interface item_category_type { id: number; subgroup_id: number | null; subgroup_name?: string; name: string; code: string | null; short_name?: string; is_active: boolean; created_by_name?: string }
 export interface country_type { id: number; name: string; code: string | null; is_active: boolean }
 export interface sub_manufacturer_type { id: number; manufacturer_id: number; name: string; code: string | null; is_active: boolean }

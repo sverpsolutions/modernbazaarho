@@ -68,6 +68,7 @@ export const channels_api = {
   delete_partner: (id: number) => api.delete(`/channels/partners/${id}`),
 
   get_product_prices: (product_id: number) => api.get<{ prices: channel_price[], product_name: string, mrp: number, cost_price: number }>(`/channels/products/${product_id}/prices`),
+  update_product_prices: (product_id: number, prices: channel_price[]) => api.post(`/channels/products/${product_id}/prices/bulk`, { prices }),
   upsert_product_price: (product_id: number, data: Partial<channel_price>) => api.post(`/channels/products/${product_id}/prices`, data),
   delete_price: (price_id: number) => api.delete(`/channels/prices/${price_id}`),
 
