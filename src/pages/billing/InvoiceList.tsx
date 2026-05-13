@@ -24,7 +24,7 @@ export default function invoice_list_page() {
       const params: Record<string, unknown> = { page, per_page }
       if (status_filter) params.status = status_filter
       const res = await billing_api.list_invoices(params)
-      set_items(res.data.items)
+      set_items(res.data.data)
       set_total(res.data.total)
     } finally {
       set_loading(false)

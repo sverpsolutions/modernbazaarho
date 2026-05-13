@@ -2,11 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { channels_api, channel_partner } from '../../api/channels';
 import toast from 'react-hot-toast';
 
-const ChannelPartners = () => {
+const ChannelPartners = ({ searchQuery = '', onCountUpdate }: { searchQuery?: string, onCountUpdate?: (count: number) => void }) => {
   const [partners, setPartners] = useState<channel_partner[]>([]);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [editingPartner, setEditingPartner] = useState<Partial<channel_partner> | null>(null);
+
+  const filtered_partners = partners.filter(p => 
+    p.partner_name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    p.partner_code.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  useEffect(() => {
+    if (onCountUpdate) onCountUpdate(filtered_partners.length);
+  }, [filtered_partners.length, onCountUpdate]);
 
   useEffect(() => {
     fetchPartners();
@@ -91,7 +100,7 @@ const ChannelPartners = () => {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {partners.map(p => (
+          {filtered_partners.map(p => (
             <div key={p.id} className={`bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border ${p.is_active ? 'border-slate-200 dark:border-slate-700' : 'border-rose-200 opacity-60'} relative overflow-hidden group`}>
               {!p.is_active && (
                 <div className="absolute top-2 right-2 bg-rose-500 text-white text-[8px] font-black px-2 py-0.5 rounded uppercase">Inactive</div>
