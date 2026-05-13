@@ -4,6 +4,7 @@ export interface product_list_item {
   id: number
   name: string
   item_code: string | null
+  code?: string | null
   category: string
   brand: string | null
   unit: string
